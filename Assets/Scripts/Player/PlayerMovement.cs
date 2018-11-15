@@ -3,9 +3,12 @@
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    [HideInInspector]
     public Vector3 Velocity;
+    [HideInInspector]
     public Vector3 WishDirection;
 
+    [HideInInspector]
     public float Dot;
 
     public float Gravity = 20.0f;
@@ -18,10 +21,13 @@ public class PlayerMovement : MonoBehaviour
     public float AirAcceleration = 4.0f;
     public float AirDeceleration = 5.0f;
 
+    [HideInInspector]
     public float CurrentSpeed;
 
+    [HideInInspector]
     public bool Decelerating;
 
+    [HideInInspector]
     public bool IsControlled;
 
     private struct Movement
@@ -192,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
     //subscribe to input events
     public void Possess()
     {
-        var handle = InputListener.Instance;
+        InputListener handle = InputListener.Instance;
 
         handle.ForwardPressed.AddListener(MoveForward);
         handle.RightPressed.AddListener(MoveRight);
@@ -206,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
     //unsubscribe to input events
     public void Unpossess()
     {
-        var handle = InputListener.Instance;
+        InputListener handle = InputListener.Instance;
 
         handle.ForwardPressed.RemoveListener(MoveForward);
         handle.RightPressed.RemoveListener(MoveRight);

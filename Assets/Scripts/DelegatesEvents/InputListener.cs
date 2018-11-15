@@ -4,6 +4,16 @@ public class InputListener : MonoBehaviour {
 
     public static InputListener Instance;
 
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+
+        return;
+    }
+
     [HideInInspector]
     public UnityFloatEvent ForwardPressed;
 
