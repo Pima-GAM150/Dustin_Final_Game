@@ -37,11 +37,11 @@ public class PlayerMovement : MonoBehaviour
         public float Horizontal;
     }
 
-    private Movement _movement;
-    private MouseInput _mouseInput;
-    private CharacterController _controller;
+    private Movement movement;
+    private MouseInput mouseInput;
+    private CharacterController controller;
 
-    private Transform _playerCam;
+    private Transform playerCam;
 
     private void Start()
     {
@@ -52,10 +52,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _playerCam = cam.transform;
+            playerCam = cam.transform;
         }
 
-        _controller = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
+
         Possess();
     }
 
@@ -67,19 +68,24 @@ public class PlayerMovement : MonoBehaviour
             Cursor.visible = false;
         }
 
-        var wishDir = new Vector3(_movement.Right, 0, _movement.Forward).normalized;
+        Vector3 wishDir = new Vector3(movement.Right, 0, movement.Forward).normalized;
         wishDir = transform.TransformDirection(wishDir);
-        var lastVel = Velocity;
-        lastVel.y = 0;
-        var curDir = lastVel.normalized;
 
-        var moveDot = Vector3.Dot(curDir, wishDir);
+        Vector3 lastVel = Velocity;
+        lastVel.y = 0;
+        
+        Vector3 curDir = lastVel.normalized;
+
+        float moveDot = Vector3.Dot(curDir, wishDir);
         Dot = moveDot;
-        var shouldAccelerate = (moveDot >= 0.01 || lastVel.sqrMagnitude <= 0.001f && wishDir.sqrMagnitude > 0);
+
+        bool shouldAccelerate = (moveDot >= 0.01 || lastVel.sqrMagnitude <= 0.001f && wishDir.sqrMagnitude > 0);
+
         float vel;
+
         WishDirection = wishDir;
 
-        if (_controller.isGrounded)
+        if (controller.isGrounded)
         {
             vel = shouldAccelerate ? GroundAcceleration : GroundDeceleration;
         }
@@ -103,98 +109,119 @@ public class PlayerMovement : MonoBehaviour
         lastVel = Vector3.ClampMagnitude(lastVel, MoveSpeed);
 
         if (lastVel.sqrMagnitude < 0.5 && !shouldAccelerate)
+        {
             lastVel = Vector3.ClampMagnitude(lastVel, 0);
+        }
 
         CurrentSpeed = Mathf.Abs(lastVel.magnitude);
         lastVel.y = Velocity.y;
 
         Velocity = lastVel;
-
-
-
-        if (_movement.Jump)
+        
+        if (movement.Jump)
         {
             Velocity.y = JumpSpeed;
-            _movement.Jump = false;
+            movement.Jump = false;
         }
-
-        else if (!_controller.isGrounded)
+        else if (!controller.isGrounded)
+        {
             Velocity.y -= Gravity * Time.deltaTime;
+        }
+        
+        controller.Move(Velocity * Time.deltaTime);
 
+        Vector3 rot = transform.eulerAngles;
 
-
-        _controller.Move(Velocity * Time.deltaTime);
-
-        var rot = transform.eulerAngles;
-
-        rot.y += _mouseInput.Horizontal;
+        rot.y += mouseInput.Horizontal;
 
         transform.eulerAngles = rot;
     }
 
     private void LateUpdate()
     {
-        var camRot = _playerCam.transform.localEulerAngles;
+        Vector3 camRot = playerCam.transform.localEulerAngles;
 
-        camRot.x += _mouseInput.Vertical;
+        camRot.x += mouseInput.Vertical;
 
-        _playerCam.transform.localEulerAngles = camRot;
+        playerCam.transform.localEulerAngles = camRot;
     }
 
 
     private void Vertical(float val)
     {
         if (Application.isFocused)
-            _mouseInput.Vertical = val;
+        {
+            mouseInput.Vertical = val;
+        }
         else
-            _mouseInput.Vertical = 0;
+        {
+            mouseInput.Vertical = 0;
+        }
     }
 
     private void Horizontal(float val)
     {
         if (Application.isFocused)
-            _mouseInput.Horizontal = val;
+        {
+            mouseInput.Horizontal = val;
+        }
         else
-            _mouseInput.Horizontal = 0;
+        {
+            mouseInput.Horizontal = 0;
+        }
     }
 
     private void Jump()
     {
-        if (_controller.isGrounded)
+        if (controller.isGrounded)
         {
-            _movement.Jump = true;
+            movement.Jump = true;
         }
     }
 
     private void MoveRight(float val)
     {
-        _movement.Right = val;
+        movement.Right = val;
     }
 
     private void MoveForward(float val)
     {
-        _movement.Forward = val;
+        movement.Forward = val;
     }
 
+    //subscribe to input events
     public void Possess()
     {
         var handle = InputListener.Instance;
 
-        handle.EventForward.AddListener(MoveForward);
-        handle.EventRight.AddListener(MoveRight);
-        handle.EventJump.AddListener(Jump);
-        handle.EventMouseX.AddListener(Horizontal);
-        handle.EventMouseY.AddListener(Vertical);
+        handle.ForwardPressed.AddListener(MoveForward);
+        handle.RightPressed.AddListener(MoveRight);
+        handle.JumpPressed.AddListener(Jump);
+        handle.MouseXEvent.AddListener(Horizontal);
+        handle.MouseYEvent.AddListener(Vertical);
+
         IsControlled = true;
     }
+
+    //unsubscribe to input events
     public void Unpossess()
     {
         var handle = InputListener.Instance;
-        handle.EventForward.RemoveListener(MoveForward);
-        handle.EventRight.RemoveListener(MoveRight);
-        handle.EventJump.RemoveListener(Jump);
-        handle.EventMouseX.RemoveListener(Horizontal);
-        handle.EventMouseY.RemoveListener(Vertical);
+
+        handle.ForwardPressed.RemoveListener(MoveForward);
+        handle.RightPressed.RemoveListener(MoveRight);
+        handle.JumpPressed.RemoveListener(Jump);
+        handle.MouseXEvent.RemoveListener(Horizontal);
+        handle.MouseYEvent.RemoveListener(Vertical);
+
         IsControlled = false;
     }
 }
+
+/*
+ * 
+ * 
+ * Much thanks to Andrew for this
+ * 
+ * 
+ */

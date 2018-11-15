@@ -4,42 +4,30 @@ public class InputListener : MonoBehaviour {
 
     public static InputListener Instance;
 
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(this);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(this);
-    }
+    [HideInInspector]
+    public UnityFloatEvent ForwardPressed;
 
     [HideInInspector]
-    public UnityFloatEvent EventForward;
+    public UnityFloatEvent RightPressed;
 
     [HideInInspector]
-    public UnityFloatEvent EventRight;
+    public UnityEvent JumpPressed;
 
     [HideInInspector]
-    public UnityEvent EventJump;
+    public UnityEvent EscapePressed;
 
     [HideInInspector]
-    public UnityEvent EventEscape;
+    public UnityEvent InteractWith;
 
     [HideInInspector]
-    public UnityEvent EventInteract;
+    public UnityFloatEvent MouseXEvent;
 
     [HideInInspector]
-    public UnityFloatEvent EventMouseX;
+    public UnityFloatEvent MouseYEvent;
 
-    [HideInInspector]
-    public UnityFloatEvent EventMouseY;
-
-    private bool _jumpPressed;
-    private bool _escapePressed;
-    private bool _interactPressed;
+    private bool jumpPressed;
+    private bool escapePressed;
+    private bool interactPressed;
 
     private void Update()
     {
@@ -57,64 +45,64 @@ public class InputListener : MonoBehaviour {
 
     private void BroadcastInteract()
     {
-        if (EventInteract == null) return;
+        if (InteractWith == null) return;
 
-        if (GetAxisDown("Interact", ref _interactPressed))
+        if (GetAxisDown("Interact", ref interactPressed))
         {
-            EventInteract.Invoke();
+            InteractWith.Invoke();
         }
     }
 
     private void BroadcastMouseY()
     {
-        if (EventMouseY == null) return;
+        if (MouseYEvent == null) return;
 
-        var y = Input.GetAxis("Mouse Y");
-        EventMouseY.Invoke(y);
+        float y = Input.GetAxis("Mouse Y");
+        MouseYEvent.Invoke(y);
     }
 
     private void BroadcastMouseX()
     {
-        if (EventMouseX == null) return;
+        if (MouseXEvent == null) return;
 
-        var x = Input.GetAxis("Mouse X");
-        EventMouseX.Invoke(x);
+        float x = Input.GetAxis("Mouse X");
+        MouseXEvent.Invoke(x);
     }
 
     private void BroadcastEscape()
     {
-        if (EventEscape == null) return;
+        if (EscapePressed == null) return;
 
-        if (GetAxisDown("Cancel", ref _escapePressed))
+        if (GetAxisDown("Cancel", ref escapePressed))
         {
-            EventEscape.Invoke();
+            EscapePressed.Invoke();
         }
     }
 
     private void BroadcastForward()
     {
-        if (EventForward == null) return;
+        if (ForwardPressed == null) return;
 
-        var fwd = Input.GetAxis("Vertical");
-        EventForward.Invoke(fwd);
+        float fwd = Input.GetAxis("Vertical");
+        ForwardPressed.Invoke(fwd);
     }
 
     private void BroadcastJump()
     {
-        if (EventJump == null) return;
+        if (JumpPressed == null) return;
 
-        if (GetAxisDown("Jump", ref _jumpPressed))
+        if (GetAxisDown("Jump", ref jumpPressed))
         {
-            EventJump.Invoke();
+            JumpPressed.Invoke();
         }
     }
 
     private void BroadcastRight()
     {
-        if (EventRight == null) return;
+        if (RightPressed == null) return;
 
-        var right = Input.GetAxis("Horizontal");
-        EventRight.Invoke(right);
+        float right = Input.GetAxis("Horizontal");
+        RightPressed.Invoke(right);
     }
 
     private static bool GetAxisDown(string axis, ref bool isPressed)
