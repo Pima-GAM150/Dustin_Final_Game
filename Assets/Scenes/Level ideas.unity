@@ -214,19 +214,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114724930211336620, guid: 5f8aea63301ed454b80d8e95780e0900,
+    - target: {fileID: 114580567707967502, guid: 5f8aea63301ed454b80d8e95780e0900,
         type: 2}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114724930211336620, guid: 5f8aea63301ed454b80d8e95780e0900,
-        type: 2}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1846242628}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8aea63301ed454b80d8e95780e0900, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &459696281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1146217409599540, guid: 5f8aea63301ed454b80d8e95780e0900,
+    type: 2}
+  m_PrefabInternal: {fileID: 423810089}
 --- !u!1001 &1154704219
 Prefab:
   m_ObjectHideFlags: 0
@@ -327,6 +327,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b81fad5e0b430748ac85a34d20037ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1846242628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1846242624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5aad4055432e1428071e358e53f64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseMenu: {fileID: 459696281}
 --- !u!1001 &2028882764
 Prefab:
   m_ObjectHideFlags: 0

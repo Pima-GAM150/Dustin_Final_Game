@@ -18,6 +18,9 @@ public class InputListener : MonoBehaviour {
     public UnityFloatEvent ForwardPressed;
 
     [HideInInspector]
+    public UnityEvent PausePressed;
+
+    [HideInInspector]
     public UnityFloatEvent RightPressed;
 
     [HideInInspector]
@@ -38,6 +41,7 @@ public class InputListener : MonoBehaviour {
     private bool jumpPressed;
     private bool escapePressed;
     private bool interactPressed;
+    private bool pausePressed;
 
     private void Update()
     {
@@ -48,6 +52,7 @@ public class InputListener : MonoBehaviour {
 
         BroadcastEscape();
         BroadcastInteract();
+        BroadcastPause();
 
         BroadcastMouseX();
         BroadcastMouseY();
@@ -68,7 +73,7 @@ public class InputListener : MonoBehaviour {
         if (MouseYEvent == null) return;
 
         float y = Input.GetAxis("Mouse Y");
-        MouseYEvent.Invoke(y);
+        MouseYEvent.Invoke(-y);
     }
 
     private void BroadcastMouseX()
@@ -104,6 +109,15 @@ public class InputListener : MonoBehaviour {
         if (GetAxisDown("Jump", ref jumpPressed))
         {
             JumpPressed.Invoke();
+        }
+    }
+    private void BroadcastPause()
+    {
+        if (PausePressed == null) return;
+
+        if (GetAxisDown("Pause", ref pausePressed))
+        {
+            PausePressed.Invoke();
         }
     }
 

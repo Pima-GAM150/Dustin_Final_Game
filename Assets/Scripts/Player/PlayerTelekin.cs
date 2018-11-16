@@ -3,6 +3,7 @@
 public class PlayerTelekin : MonoBehaviour
 {
     public GameObject Teleshot;
+    public GameObject Catcher;
 
     void Shoot()
     {
@@ -12,8 +13,8 @@ public class PlayerTelekin : MonoBehaviour
     {
 
     }
-    void TelekinShot()
+    public void TelekinShot()
     {
-
+        Instantiate(Teleshot,Catcher.transform.position,Teleshot.transform.rotation);
     }
 }

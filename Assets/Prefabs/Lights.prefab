@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4767548084858044}
   - component: {fileID: 108677793027493154}
   m_Layer: 0
-  m_Name: Red
+  m_Name: Orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4672758413156734}
   - component: {fileID: 108603106019216310}
   m_Layer: 0
-  m_Name: Orange
+  m_Name: yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,8 +138,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0, g: 0.38958403, b: 0.6132076, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 0.0064524733, g: 0.16580026, b: 0.2735849, a: 1}
+  m_Intensity: 0.98
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -175,8 +175,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.8867924, g: 0.7546153, b: 0, a: 1}
-  m_Intensity: 1.5
+  m_Color: {r: 1, g: 0.8495575, b: 0, a: 1}
+  m_Intensity: 0.78
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -212,8 +212,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.08235294, b: 0.05490196, a: 1}
-  m_Intensity: 0.6
+  m_Color: {r: 1, g: 0.42603484, b: 0.054901958, a: 1}
+  m_Intensity: 0.64
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
