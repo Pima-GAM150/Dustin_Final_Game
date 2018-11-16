@@ -8,9 +8,11 @@ public class Block : MonoBehaviour, ILiftable, IDamagable
 
     public float Health;
 
+    public float MoveSpeed;
+
     void Start()
     {
-
+        shootable = false;
     }
 
 
@@ -38,12 +40,12 @@ public class Block : MonoBehaviour, ILiftable, IDamagable
 
     void ILiftable.Lift()
     {
-
+        shootable = true;
     }
 
     void ILiftable.Shoot()
     {
-
+        shootable = false;
     }
 
     void IDamagable.TakeDamage(float damage)
@@ -57,16 +59,16 @@ public class Block : MonoBehaviour, ILiftable, IDamagable
 
     void Stop()
     {
-
+        
     }
 
     void MoveToPlayer()
     {
-
+        transform.position = Vector3.MoveTowards(this.transform.position, PlayerTelekin.PlayerS.GetComponentInChildren<Camera>().transform.position, .1f);
     }
 
     void Launch()
     {
-
+       
     }
 }

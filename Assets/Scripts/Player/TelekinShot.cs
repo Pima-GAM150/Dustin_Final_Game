@@ -8,16 +8,18 @@ public class TelekinShot : MonoBehaviour
 
 	void Start ()
     {
-		
+        this.transform.forward = PlayerTelekin.PlayerS.GetComponentInChildren<Camera>().transform.forward;
 	}
 
 	void Update ()
     {
-        transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        transform.Translate(this.transform.forward * Speed * Time.deltaTime);
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
+        collision.gameObject.GetComponent<ILiftable>().Lift();
+
         Destroy(this.gameObject);
     }
 }

@@ -2,6 +2,15 @@
 
 public class PlayerTelekin : MonoBehaviour
 {
+    public static PlayerTelekin PlayerS;
+
+    private void Awake()
+    {
+        if (PlayerS == null)
+        {
+            PlayerS = this;
+        }
+    }
     public GameObject Teleshot;
     public GameObject Catcher;
 
@@ -15,6 +24,20 @@ public class PlayerTelekin : MonoBehaviour
     }
     public void TelekinShot()
     {
-        Instantiate(Teleshot,Catcher.transform.position,Teleshot.transform.rotation);
+        Instantiate(Teleshot, PlayerTelekin.PlayerS.GetComponentInChildren<Camera>().transform.position, Teleshot.transform.rotation);
+    }
+
+    private void Start()
+    {
+        InputListener handle = InputListener.Instance;
+
+        handle.InteractWith.AddListener(TelekinShot);
+    }
+
+    private void OnDisable()
+    {
+        InputListener handle = InputListener.Instance;
+
+        handle.InteractWith.RemoveListener(TelekinShot);
     }
 }
