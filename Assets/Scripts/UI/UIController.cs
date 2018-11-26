@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
 
         handle.PausePressed.AddListener(Pause);
     }
+
     private void OnDisable()
     {
         InputListener handle = InputListener.Instance;
@@ -27,14 +28,17 @@ public class UIController : MonoBehaviour
     {
         Application.Quit();
     }
+
     public void SaveGame()
     {
 
     }
+
     public void TitleSecret()
     {
 
     }
+
     private void Pause()
     {
         Time.timeScale = .001f;
@@ -42,6 +46,7 @@ public class UIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         PauseMenu.SetActive(true);
     }
+
     public void Resume()
     {
         Time.timeScale = 1f;
