@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class UIController : MonoBehaviour
 
     public void StartGame()
     {
-
+        SceneManager.LoadScene("Level");
     }
     public void QuitGame()
     {
@@ -36,7 +37,7 @@ public class UIController : MonoBehaviour
 
     public void TitleSecret()
     {
-
+        SceneManager.LoadScene("TitleSecret");
     }
 
     private void Pause()

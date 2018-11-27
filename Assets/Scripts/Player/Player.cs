@@ -13,10 +13,11 @@ public class Player : MonoBehaviour
     }
 
     public GameObject Bullet;
+    public GameObject Spawner;
 
     public void TelekinShot()
     {
-        Instantiate(Bullet, PlayerS.GetComponentInChildren<Camera>().transform.position, Bullet.transform.rotation);
+        Instantiate(Bullet, Spawner.transform.position, Quaternion.identity);
     }
     
     private void Start()
