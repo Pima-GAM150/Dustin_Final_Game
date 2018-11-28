@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public float Dot;
 
+    public AudioSource Footsteps;
+
+
     public float Gravity = 20.0f;
     public float JumpSpeed = 6.0f;
     public float MoveSpeed = 4.0f;
