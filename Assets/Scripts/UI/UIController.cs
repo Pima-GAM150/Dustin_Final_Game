@@ -23,21 +23,32 @@ public class UIController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("Input");
     }
+
     public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void SaveGame()
-    {
-
-    }
-
     public void TitleSecret()
     {
         SceneManager.LoadScene("TitleSecret");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Level()
+    {
+        SceneManager.LoadScene("Level");
+    }
+
+    public void Ending()
+    {
+        SceneManager.LoadScene("Ending");
     }
 
     private void Pause()
