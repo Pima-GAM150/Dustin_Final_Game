@@ -22,13 +22,11 @@ public class Loader : MonoBehaviour
 
     string PlayerJson;
 
-    [HideInInspector]
+    
     public string PlayerString;
 
-    [HideInInspector]
+    
     public PlayerStats Stats;
-
-    public Text HighScoreText;
 
     public void Load()
     {
@@ -48,7 +46,7 @@ public class Loader : MonoBehaviour
         }
     }
 
-    public void GetHighScore()
+    public string GetHighScore()
     {
         int scores = 0;
 
@@ -70,13 +68,16 @@ public class Loader : MonoBehaviour
 
         if (NoScores)
         {
-            HighScoreText.text = "What are you thinking?? There are NO Highscores yet.";
+            return "What are you thinking?? There are NO Highscores yet.";
         }
         else
         {
-            HighScoreText.text = "Easy "+ Stats.HighScore[0] 
-                                +"\nMeduim " + Stats.HighScore[1]
-                                + "\nHard " + Stats.HighScore[2];
+            return string.Format("{0,-10}{6,-10}{3,10}\n" +
+                                 "{1,-10}{7,-10}{4,10}\n" +
+                                 "{2,-10}{8,-10}{5,10}\n",
+                                 Stats.PlayerName[0], Stats.PlayerName[1], Stats.PlayerName[2],
+                                 Stats.HighScore[0], Stats.HighScore[1], Stats.HighScore[2],
+                                 "Eas", "Med", "Hrd");
         }
     }
 

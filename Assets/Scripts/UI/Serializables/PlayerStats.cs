@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class PlayerStats
 {
-    public int Score;
-    public string PlayerName;
+    public string LastPlayer;
+    public string[] PlayerName;
     public int[] HighScore;
 }
