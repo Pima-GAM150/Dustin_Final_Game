@@ -14,6 +14,8 @@ public class Timer : MonoBehaviour
 
     public UnityEvent HitZero;
 
+    public AudioSource OutOfTimeSound;
+
     public GameDifficulty Difficulty = GameDifficulty.Easy;
 
     public Text TimerText;
@@ -22,8 +24,12 @@ public class Timer : MonoBehaviour
 
     private float AllotedTime;
 
+    private bool Playing;
+
     private void Start()
     {
+        Playing = false;
+
         switch(Difficulty)
         {
             case GameDifficulty.Easy:
@@ -36,7 +42,10 @@ public class Timer : MonoBehaviour
                 AllotedTime = HardTime;
                 break;
         }
+
         TimerText.text = AllotedTime.ToString();
+
+        StartCoroutine(CountDownTimer());
     }
 
     IEnumerator CountDownTimer()
@@ -48,6 +57,12 @@ public class Timer : MonoBehaviour
             AllotedTime -= 1;
 
             TimerText.text = AllotedTime.ToString();
+
+            if(AllotedTime<=20 && !Playing)
+            {
+                OutOfTimeSound.Play();
+                Playing = true;
+            }
 
             if (AllotedTime <= 0)
             {

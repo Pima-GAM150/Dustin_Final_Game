@@ -111,12 +111,14 @@ public class InputListener : MonoBehaviour {
             JumpPressed.Invoke();
         }
     }
+
     private void BroadcastPause()
     {
         if (PausePressed == null) return;
 
         if (GetAxisDown("Pause", ref pausePressed))
         {
+            Debug.Log("pause invoked");
             PausePressed.Invoke();
         }
     }
