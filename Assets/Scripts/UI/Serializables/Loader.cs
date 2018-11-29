@@ -22,9 +22,7 @@ public class Loader : MonoBehaviour
 
     string PlayerJson;
 
-    
     public string PlayerString;
-
     
     public PlayerStats Stats;
 
@@ -72,9 +70,10 @@ public class Loader : MonoBehaviour
         }
         else
         {
-            return string.Format("{0,-10}{6,-10}{3,10}\n" +
-                                 "{1,-10}{7,-10}{4,10}\n" +
-                                 "{2,-10}{8,-10}{5,10}\n",
+            return string.Format(( Stats.HighScore[0] != 0 ? "{0,-10}{6,-10}{3,10}\n" : "\n" )+//if the score is not 0 show it
+                                 ( Stats.HighScore[1] != 0 ? "{1,-10}{7,-10}{4,10}\n" : "\n" )+
+                                 ( Stats.HighScore[2] != 0 ? "{2,-10}{8,-10}{5,10}\n" : "\n" ),
+                                 
                                  Stats.PlayerName[0], Stats.PlayerName[1], Stats.PlayerName[2],
                                  Stats.HighScore[0], Stats.HighScore[1], Stats.HighScore[2],
                                  "Eas", "Med", "Hrd");
