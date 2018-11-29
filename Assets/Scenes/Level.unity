@@ -261,17 +261,6 @@ Prefab:
       propertyPath: HitZero.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1846242628}
-    - target: {fileID: 114823074652955312, guid: 613dee131f675544188683acef5832dd,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 114771732240906040, guid: 34bc7b28fee4717468b60780a1bb64cd,
-        type: 2}
-    - target: {fileID: 114823074652955312, guid: 613dee131f675544188683acef5832dd,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MainMenu
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 613dee131f675544188683acef5832dd, type: 2}
   m_IsPrefabAsset: 0
@@ -369,6 +358,10 @@ Prefab:
     - target: {fileID: 1103179564835360, guid: 408b199f728600d40ad510148c7bb7bf, type: 2}
       propertyPath: m_TagString
       value: Respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317888273071584, guid: 408b199f728600d40ad510148c7bb7bf, type: 2}
+      propertyPath: m_TagString
+      value: Win
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 408b199f728600d40ad510148c7bb7bf, type: 2}

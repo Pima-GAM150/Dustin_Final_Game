@@ -57,8 +57,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stats:
     Score: 0
-    PlayerName: 
-    HighScore: 0
+    PlayerName: bob
+    HighScore: 
+  gameDifficulty: 0
 --- !u!114 &114600232069651894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,11 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4044dd76cef15c45bfd8edea6f3c4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerString: 
+  PlayerString: Dustin
   Stats:
-    Score: 0
+    Score: 5
     PlayerName: 
-    HighScore: 0
+    HighScore: 000000000000000000000000
   HighScoreText: {fileID: 114899772901471974, guid: 5046eead20d2a234c8e00e823a248e4b,
     type: 2}
 --- !u!114 &114771732240906040

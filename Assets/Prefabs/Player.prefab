@@ -1011,11 +1011,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OutOfTimeSound: {fileID: 82191787046809316}
-  Difficulty: 2
+  Difficulty: 0
   TimerText: {fileID: 114682096997151618}
-  EasyTime: 120
-  MediumTime: 90
-  HardTime: 60
+  TimerTextLabel: {fileID: 114027066563930182}
+  EasyTime: 100
+  MediumTime: 75
+  HardTime: 50
+  AllotedTime: 0
 --- !u!114 &114823074652955312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,8 +1057,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SaveGame
+      - m_Target: {fileID: 114771732240906040, guid: 34bc7b28fee4717468b60780a1bb64cd,
+          type: 2}
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1288,7 +1291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -91.9, y: -0.000044346}
+  m_AnchoredPosition: {x: 0.00013733, y: 53}
   m_SizeDelta: {x: 166.42, y: 52.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224459547376768420
@@ -1325,8 +1328,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 156.79999, y: -43.800003}
-  m_SizeDelta: {x: 166.42, y: 52.12}
+  m_AnchoredPosition: {x: 83.20001, y: -88.100006}
+  m_SizeDelta: {x: 166.4, y: 176.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224701269250711406
 RectTransform:
