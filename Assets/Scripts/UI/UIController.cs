@@ -34,11 +34,6 @@ public class UIController : MonoBehaviour
         handle.PausePressed.RemoveListener(Pause);
     }
 
-    public void Input()
-    {
-        SceneManager.LoadScene("Input");
-    }
-
     public void QuitGame()
     {
         Saver.Instance.Save();
@@ -46,31 +41,6 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1f;
 
         Application.Quit();
-    }
-
-    public void TitleSecret()
-    {
-        SceneManager.LoadScene("TitleSecret");
-    }
-
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void Level()
-    {
-        Loader.Instance.Load();
-
-        Saver.Instance.Stats.HighScore = Loader.Instance.Stats.HighScore;
-
-        SceneManager.LoadScene("Level");
-    }
-
-    public void Ending()
-    {
-        Saver.Instance.Save();
-        SceneManager.LoadScene("Ending");
     }
 
     private void Pause()

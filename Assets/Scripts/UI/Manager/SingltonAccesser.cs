@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SingltonAccesser : MonoBehaviour
 {
     public Text HighScoretext;
+    public GameObject LoadingPanel;
+    public Image Bar;
 
     public void SetDifficulty(int diff)
     {
@@ -29,27 +33,27 @@ public class SingltonAccesser : MonoBehaviour
 
     public void LetsRace()
     {
-        UIController.Instance.Level();
+        LoadLevel("Level");
     }
 
     public void GoToEnding()
     {
-        UIController.Instance.Ending();
+        LoadLevel("Ending");
     }
 	
     public void GoToMainMenu()
     {
-        UIController.Instance.MainMenu();
+        LoadLevel("MainMenu");
     }
 
     public void GoToInput()
     {
-        UIController.Instance.Input();
+        LoadLevel("Input");
     }
 
     public void GoToHighScoreVeiwer()
     {
-        UIController.Instance.TitleSecret();
+        LoadLevel("TitleSecret");
     }
 
     public void LetsQuit()
@@ -60,5 +64,26 @@ public class SingltonAccesser : MonoBehaviour
     public void ResumeGame()
     {
         UIController.Instance.Resume();
+    }
+
+    public void LoadLevel(string name)
+    {
+        LoadingPanel.SetActive(true);
+
+        StartCoroutine(AsyncLoad(name));
+    }
+
+    IEnumerator AsyncLoad(string scene)
+    {
+        AsyncOperation load = SceneManager.LoadSceneAsync(scene);
+
+        while (!load.isDone)
+        {
+            float progress = Mathf.Clamp01(load.progress / .9f);
+
+            Bar.fillAmount = progress;
+
+            yield return null;
+        }
     }
 }

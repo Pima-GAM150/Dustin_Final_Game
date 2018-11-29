@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     public GameObject PauseMenu;
 
+    public SingltonAccesser accesser;
+
     public void TelekinShot()
     {
         if (!PauseMenu.activeInHierarchy)
@@ -39,7 +41,7 @@ public class Player : MonoBehaviour
     {
         Saver.Instance.SetScore(0);
 
-        UIController.Instance.Ending();
+        accesser.GoToEnding();
     }
 
     Vector3 InitialPos;
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour
         Timer TimeHandle = Timer.Instance;
 
         InitialPos = this.transform.position;
+        accesser = FindObjectOfType<SingltonAccesser>();
 
         TimeHandle.HitZero.AddListener(YouLoose);
         handle.InteractWith.AddListener(TelekinShot);
@@ -76,7 +79,7 @@ public class Player : MonoBehaviour
         {
             Saver.Instance.SetScore(Timer.Instance.AllotedTime);
 
-            UIController.Instance.Ending();
+            accesser.GoToEnding();
         }
     }
 }
