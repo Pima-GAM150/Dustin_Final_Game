@@ -62,7 +62,7 @@ public class InputListener : MonoBehaviour {
     {
         if (InteractWith == null) return;
 
-        if (GetAxisDown("Interact", ref interactPressed))
+        if (GetAxisDown("Fire1", ref interactPressed))
         {
             InteractWith.Invoke();
         }
@@ -111,12 +111,14 @@ public class InputListener : MonoBehaviour {
             JumpPressed.Invoke();
         }
     }
+
     private void BroadcastPause()
     {
         if (PausePressed == null) return;
 
         if (GetAxisDown("Pause", ref pausePressed))
         {
+            Debug.Log("pause invoked");
             PausePressed.Invoke();
         }
     }
@@ -148,6 +150,6 @@ public class InputListener : MonoBehaviour {
 /*
  * 
  * Much thanks to Andrew this is a good input controller
- * aswell as the layer movement script
+ * aswell as the player movement script
  * 
  */

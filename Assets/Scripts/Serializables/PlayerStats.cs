@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-class PlayerStats
+public class PlayerStats
 {
-    int Level;
-    int Score;
-    string PlayerName;
+    public int Score;
+    public string PlayerName;
+    public int HighScore;
 }
