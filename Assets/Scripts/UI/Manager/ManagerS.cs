@@ -11,7 +11,7 @@ public class ManagerS : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class Saver : MonoBehaviour
@@ -19,12 +20,21 @@ public class Saver : MonoBehaviour
 
     private void Start()
     {
+        Loader.Instance.Load();
+
+        if(SceneManager.GetActiveScene().name == "Input")
+        {
+            Stats.LastPlayer = Loader.Instance.Stats.LastPlayer;
+        }
+
         Stats.HighScore = Loader.Instance.Stats.HighScore;
+        Stats.PlayerName = Loader.Instance.Stats.PlayerName;
     }
 
     public PlayerStats Stats;
 
-    [HideInInspector]
+    public int Score;
+
     public Timer.GameDifficulty gameDifficulty;
 
     string Path;
@@ -46,10 +56,8 @@ public class Saver : MonoBehaviour
     }
     
     public void SetName(string name)
-    {        
-        Stats.PlayerName = name;
-
-        Debug.Log(name + " " + Stats.PlayerName);
+    {
+        Stats.LastPlayer = name;
     }
 
     public void SetScore(int score)
@@ -70,11 +78,13 @@ public class Saver : MonoBehaviour
         if (score > Stats.HighScore[index])
         {
             Stats.HighScore[index] = score;
-            Stats.Score = score;
+            Stats.PlayerName[index] = Stats.LastPlayer;
+
+            Score = score;
         }
         else
         {
-            Stats.Score = score;
+            Score = score;
         }
     }
 

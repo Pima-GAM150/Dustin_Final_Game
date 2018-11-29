@@ -42,6 +42,9 @@ public class UIController : MonoBehaviour
     public void QuitGame()
     {
         Saver.Instance.Save();
+
+        Time.timeScale = 1f;
+
         Application.Quit();
     }
 
@@ -64,16 +67,8 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene("Level");
     }
 
-    public void Ending(Timer.GameDifficulty difficulty)
-    {
-        Saver.Instance.gameDifficulty = difficulty;
-        Saver.Instance.Save();
-        SceneManager.LoadScene("Ending");
-    }
-
     public void Ending()
     {
-        Saver.Instance.gameDifficulty = Timer.Instance.Difficulty;
         Saver.Instance.Save();
         SceneManager.LoadScene("Ending");
     }

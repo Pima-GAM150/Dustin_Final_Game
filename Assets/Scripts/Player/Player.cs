@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
         {
             PlayerS = this;
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public GameObject Bullet;

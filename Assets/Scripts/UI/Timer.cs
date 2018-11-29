@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
         }
 
         TimerText.text = AllotedTime.ToString() + " seconds left.";
-        TimerTextLabel.text = Saver.Instance.Stats.PlayerName + "... You only have ";
+        TimerTextLabel.text = Saver.Instance.Stats.LastPlayer + "... You only have ";
 
         StartCoroutine(CountDownTimer());
     }
