@@ -2,10 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public GameObject PauseMenu;
+    public static UIController Instance;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
     private void Start()
     {
@@ -21,13 +34,14 @@ public class UIController : MonoBehaviour
         handle.PausePressed.RemoveListener(Pause);
     }
 
-    public void StartGame()
+    public void Input()
     {
         SceneManager.LoadScene("Input");
     }
 
     public void QuitGame()
     {
+        Saver.Instance.Save();
         Application.Quit();
     }
 
@@ -53,17 +67,25 @@ public class UIController : MonoBehaviour
 
     private void Pause()
     {
+        Debug.Log("pause called");
+
+        Player.PlayerS.PauseMenu.SetActive(true);
+
+        Player.PlayerS.GetComponent<PlayerMovement>().Paused = true;
+
         Time.timeScale = .001f;
+
         Cursor.visible = true;
+
         Cursor.lockState = CursorLockMode.None;
-        PauseMenu.SetActive(true);
     }
 
     public void Resume()
     {
+        Player.PlayerS.PauseMenu.SetActive(false);
+
+        Player.PlayerS.GetComponent<PlayerMovement>().Paused = false;
+
         Time.timeScale = 1f;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        PauseMenu.SetActive(false);
     }
 }

@@ -202,28 +202,13 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.Forward = val;
     }
-
-    private void GamePause()
-    {
-        if(!Paused)
-        {
-            Paused = true;
-        }
-        else
-        {
-            Paused = false;
-        }
-    }
-
-   
-
+    
     //subscribe to input events
     public void Possess()
     {
         InputListener handle = InputListener.Instance;
 
         handle.ForwardPressed.AddListener(MoveForward);
-        handle.PausePressed.AddListener(GamePause);
         handle.RightPressed.AddListener(MoveRight);
         handle.JumpPressed.AddListener(Jump);
         handle.MouseXEvent.AddListener(Horizontal);
@@ -238,7 +223,6 @@ public class PlayerMovement : MonoBehaviour
         InputListener handle = InputListener.Instance;
 
         handle.ForwardPressed.RemoveListener(MoveForward);
-        handle.PausePressed.RemoveListener(GamePause);
         handle.RightPressed.RemoveListener(MoveRight);
         handle.JumpPressed.RemoveListener(Jump);
         handle.MouseXEvent.RemoveListener(Horizontal);

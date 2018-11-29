@@ -1,29 +1,56 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.IO;
 
 public class Saver : MonoBehaviour
 {
-    PlayerStats Stats;
+    public static Saver Instance;
 
-    public void Save()
+    private void Awake()
     {
-        string bossJson = string.Empty, playerJson = string.Empty;
-
-       /* if (Manager != null)
+        if (Instance == null)
         {
-
-            playerJson = JsonUtility.ToJson(Manager.PlayerData);
+            Instance = this;
         }
         else
         {
-            return;
+            Destroy(this);
         }
-
-        PathForSavedPlayer = Application.streamingAssetsPath + "/SavedPlayerStats.json";
-
-
-        File.WriteAllText(PathForSavedPlayer, playerJson);*/
     }
-	
+
+    public PlayerStats Stats;
+
+    string Path;
+    
+    public void Save()
+    {
+        string PlayerJson = string.Empty;
+
+        PlayerJson = JsonUtility.ToJson(Stats);
+
+        if (PlayerJson != null)
+        {
+            Path = Application.streamingAssetsPath + "/PlayerStats.json";
+
+            File.WriteAllText(Path, PlayerJson);
+        }
+       
+    }
+    
+    public void SetName(string name)
+    {
+        Stats.PlayerName = name;
+    }
+
+    public void SetScore(int score)
+    {
+        if (score > Stats.HighScore)
+        {
+            Stats.HighScore = score;
+            Stats.Score = score;
+        }
+        else
+        {
+            Stats.Score = score;
+        }
+    }
 }
