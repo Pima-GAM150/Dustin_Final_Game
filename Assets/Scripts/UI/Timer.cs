@@ -5,6 +5,20 @@ using System.Collections;
 
 public class Timer : MonoBehaviour
 {
+    public static Timer Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     public enum GameDifficulty
     {
         Easy,
@@ -16,19 +30,24 @@ public class Timer : MonoBehaviour
 
     public AudioSource OutOfTimeSound;
 
-    public GameDifficulty Difficulty = GameDifficulty.Easy;
+    public GameDifficulty Difficulty;
 
     public Text TimerText;
 
-    public float EasyTime, MediumTime, HardTime;
+    public Text TimerTextLabel;
 
-    private float AllotedTime;
+    public int EasyTime, MediumTime, HardTime;
+
+    [HideInInspector]
+    public int AllotedTime;
 
     private bool Playing;
 
     private void Start()
     {
         Playing = false;
+
+        Difficulty = Saver.Instance.gameDifficulty;
 
         switch(Difficulty)
         {
@@ -43,7 +62,8 @@ public class Timer : MonoBehaviour
                 break;
         }
 
-        TimerText.text = AllotedTime.ToString();
+        TimerText.text = AllotedTime.ToString() + " seconds left.";
+        TimerTextLabel.text = Saver.Instance.Stats.PlayerName + "... You only have ";
 
         StartCoroutine(CountDownTimer());
     }
@@ -56,7 +76,7 @@ public class Timer : MonoBehaviour
 
             AllotedTime -= 1;
 
-            TimerText.text = AllotedTime.ToString();
+            TimerText.text = AllotedTime.ToString() + " seconds left.";
 
             if(AllotedTime<=20 && !Playing)
             {
@@ -70,4 +90,5 @@ public class Timer : MonoBehaviour
             }
         }
     }
+
 }

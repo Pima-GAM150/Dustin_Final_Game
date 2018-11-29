@@ -30,22 +30,34 @@ public class Player : MonoBehaviour
         }
         
     }
+    
+    public void YouLoose()
+    {
+        Saver.Instance.SetScore(0);
+
+        UIController.Instance.Ending();
+    }
 
     Vector3 InitialPos;
     
     private void Start()
     {
         InputListener handle = InputListener.Instance;
+        Timer TimeHandle = Timer.Instance;
 
         InitialPos = this.transform.position;
 
+        TimeHandle.HitZero.AddListener(YouLoose);
         handle.InteractWith.AddListener(TelekinShot);
+
     }
 
     private void OnDisable()
     {
         InputListener handle = InputListener.Instance;
+        Timer TimeHandle = Timer.Instance;
 
+        TimeHandle.HitZero.AddListener(YouLoose);
         handle.InteractWith.RemoveListener(TelekinShot);
     }
 
@@ -54,6 +66,13 @@ public class Player : MonoBehaviour
         if(other.gameObject.tag == "Respawn")
         {
             this.transform.position = InitialPos;
+        }
+
+        if(other.gameObject.tag == "Win")
+        {
+            Saver.Instance.SetScore(Timer.Instance.AllotedTime);
+
+            UIController.Instance.Ending();
         }
     }
 }

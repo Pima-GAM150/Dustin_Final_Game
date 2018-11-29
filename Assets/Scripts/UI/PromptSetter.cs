@@ -18,7 +18,7 @@ public class PromptSetter : MonoBehaviour
 
         if (Loader.Instance.Stats.PlayerName == string.Empty)
         {
-            Prompt = "Hey, I don't recognize you... Whats your name?";
+            Prompt = "Hey, I don't recognize you... Whats your name? \n oh and dont forget to pick a dificulty.";
         }
         else
         {
