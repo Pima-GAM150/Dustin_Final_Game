@@ -33,7 +33,16 @@ public class SingltonAccesser : MonoBehaviour
 
     public void LetsRace()
     {
-        LoadLevel("Level");
+        Saver.Instance.Save();
+
+        LoadLevel("Level1");
+    }
+
+    public void Level2()
+    {
+        Saver.Instance.Save();
+
+        LoadLevel("Level2");
     }
 
     public void GoToEnding()
@@ -43,6 +52,10 @@ public class SingltonAccesser : MonoBehaviour
 	
     public void GoToMainMenu()
     {
+        Saver.Instance.Save();
+
+        Saver.Instance.ResetScore();
+
         LoadLevel("MainMenu");
     }
 

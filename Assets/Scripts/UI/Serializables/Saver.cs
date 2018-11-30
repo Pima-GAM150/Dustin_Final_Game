@@ -11,6 +11,7 @@ public class Saver : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            Score = 0;
         }
         else
         {
@@ -80,12 +81,17 @@ public class Saver : MonoBehaviour
             Stats.HighScore[index] = score;
             Stats.PlayerName[index] = Stats.LastPlayer;
 
-            Score = score;
+            Score += score;
         }
         else
         {
-            Score = score;
+            Score += score;
         }
+    }
+
+    public void ResetScore()
+    {
+        Score = 0;
     }
 
     public void SetDifficulty(int diff)

@@ -15,22 +15,17 @@ public class PromptSetter : MonoBehaviour
     private void Start()
     {
         Loader.Instance.Load();
-        int names = 0;
-        bool NoNames = false;
 
-        foreach (string s in Loader.Instance.Stats.PlayerName)
+        bool NoName = false;
+
+        if (Loader.Instance.Stats.LastPlayer ==string.Empty)
         {
-            if (s == string.Empty)
-            {
-                names++;
-            }
-            if (names == 3)
-            {
-                NoNames = true;
-            }
+            NoName = true;
         }
+        
 
-        if (NoNames)
+
+        if (NoName)
         {
             Prompt = "Hey, I don't recognize you... Whats your name? \n oh and dont forget to pick a dificulty.";
         }
