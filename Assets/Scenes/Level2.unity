@@ -406,17 +406,17 @@ Prefab:
     - target: {fileID: 114799571407883478, guid: 613dee131f675544188683acef5832dd,
         type: 2}
       propertyPath: HardTime
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114799571407883478, guid: 613dee131f675544188683acef5832dd,
         type: 2}
       propertyPath: MediumTime
-      value: 100
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 114799571407883478, guid: 613dee131f675544188683acef5832dd,
         type: 2}
       propertyPath: EasyTime
-      value: 125
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 613dee131f675544188683acef5832dd, type: 2}

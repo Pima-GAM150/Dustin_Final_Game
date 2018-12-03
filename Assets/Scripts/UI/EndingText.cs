@@ -15,7 +15,7 @@ public class EndingText : MonoBehaviour
 
         if (Saver.Instance.Score <= 0)
         {
-            Results.text = "UhOh you didnt make it to the end in time...";
+            Results.text = "Uh Oh, you didnt make it to the end in time...";
             BadEnding.Play();
         }
         else
