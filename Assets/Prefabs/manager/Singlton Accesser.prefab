@@ -52,3 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HighScoretext: {fileID: 0}
+  LoadingPanel: {fileID: 0}
+  Bar: {fileID: 0}

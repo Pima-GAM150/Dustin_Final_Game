@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -79,7 +80,18 @@ public class Player : MonoBehaviour
         {
             Saver.Instance.SetScore(Timer.Instance.AllotedTime);
 
-            accesser.GoToEnding();
+            if (SceneManager.GetActiveScene().name == "Level1")
+            {
+                accesser.Level2();
+            }
+            else if (SceneManager.GetActiveScene().name == "Leve2")
+            {
+                accesser.Level3();
+            }
+            else
+            {
+                accesser.GoToEnding();
+            }
         }
     }
 }

@@ -660,7 +660,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: 0973fe4d-6b48-455f-92ab-38d4ca659f7f
   projectName: DustinFinalGame
   organizationId: dustman1750

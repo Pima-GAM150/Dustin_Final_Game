@@ -21,6 +21,7 @@ public class Block : MonoBehaviour, IDamagable
 
     void IDamagable.Die()
     {
+        FindObjectOfType<Timer>().AllotedTime += 2;
         Destroy(this.gameObject);
     }
 }
