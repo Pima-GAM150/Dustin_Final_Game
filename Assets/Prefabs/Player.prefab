@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 20547510927374838}
   - component: {fileID: 81610829622981694}
   - component: {fileID: 82994748095649954}
+  - component: {fileID: 135331579498149488}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -1185,6 +1186,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!135 &135331579498149488
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933206296603326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143540381332874530
 CharacterController:
   m_ObjectHideFlags: 1
