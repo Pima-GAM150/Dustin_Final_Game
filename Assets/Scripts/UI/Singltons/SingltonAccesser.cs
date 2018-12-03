@@ -8,6 +8,21 @@ public class SingltonAccesser : MonoBehaviour
     public Text HighScoretext;
     public GameObject LoadingPanel;
     public Image Bar;
+    public GameObject PauseMenu;
+
+    private void Start()
+    {
+        InputListener handle = InputListener.Instance;
+
+        handle.PausePressed.AddListener(PauseGame);
+    }
+
+    private void OnDisable()
+    {
+        InputListener handle = InputListener.Instance;
+
+        handle.PausePressed.RemoveListener(PauseGame);
+    }
 
     public void SetDifficulty(int diff)
     {
@@ -44,12 +59,7 @@ public class SingltonAccesser : MonoBehaviour
 
         LoadLevel("Level2");
     }
-
-    public void Level3()
-    {
-        LoadLevel("Level3");
-    }
-
+    
     public void GoToEnding()
     {
         LoadLevel("Ending");
@@ -60,6 +70,8 @@ public class SingltonAccesser : MonoBehaviour
         Saver.Instance.Save();
 
         Saver.Instance.ResetScore();
+
+        Time.timeScale = 1;
 
         LoadLevel("MainMenu");
     }
@@ -79,8 +91,16 @@ public class SingltonAccesser : MonoBehaviour
         UIController.Instance.QuitGame();
     }
 
+    public void PauseGame()
+    {
+        Debug.Log("puseGameCalled");
+        PauseMenu.gameObject.SetActive(true);
+    }
+
     public void ResumeGame()
     {
+        PauseMenu.gameObject.SetActive(true);
+
         UIController.Instance.Resume();
     }
 

@@ -84,10 +84,6 @@ public class Player : MonoBehaviour
             {
                 accesser.Level2();
             }
-            else if (SceneManager.GetActiveScene().name == "Leve2")
-            {
-                accesser.Level3();
-            }
             else
             {
                 accesser.GoToEnding();

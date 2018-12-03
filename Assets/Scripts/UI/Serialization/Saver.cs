@@ -28,8 +28,8 @@ public class Saver : MonoBehaviour
             Stats.LastPlayer = Loader.Instance.Stats.LastPlayer;
         }
 
-        Stats.HighScore = Loader.Instance.Stats.HighScore;
-        Stats.PlayerNames = Loader.Instance.Stats.PlayerNames;
+        Stats.HighScore = Loader.Instance.Stats.HighScore ?? (new int[3]);
+        Stats.PlayerNames = Loader.Instance.Stats.PlayerNames ?? (new string[3]);
     }
 
     public PlayerStats Stats;
@@ -76,7 +76,7 @@ public class Saver : MonoBehaviour
             break;
         }
 
-        if (score > Stats.HighScore[index])
+        if (score > Stats.HighScore[index] && Stats.HighScore.Length > 0)
         {
             Stats.HighScore[index] = score;
             Stats.PlayerNames[index] = Stats.LastPlayer;

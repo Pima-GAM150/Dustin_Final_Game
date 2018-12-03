@@ -53,7 +53,7 @@ public class InputListener : MonoBehaviour {
         BroadcastEscape();
         BroadcastInteract();
         BroadcastPause();
-
+        
         BroadcastMouseX();
         BroadcastMouseY();
     }

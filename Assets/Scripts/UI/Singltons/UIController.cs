@@ -38,12 +38,10 @@ public class UIController : MonoBehaviour
     {
         Saver.Instance.Save();
 
-        Time.timeScale = 1f;
-
         Application.Quit();
     }
 
-    private void Pause()
+    public void Pause()
     {
         Debug.Log("pause called");
 

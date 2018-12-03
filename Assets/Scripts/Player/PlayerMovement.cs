@@ -81,6 +81,10 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+        else
+        {
+            return;
+        }
 
         Vector3 wishDir = new Vector3(movement.Right, 0, movement.Forward).normalized;
         wishDir = transform.TransformDirection(wishDir);
@@ -163,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Vertical(float val)
     {
-        if (Application.isFocused)
+        if (Application.isFocused && !Paused)
         {
             mouseInput.Vertical = val;
         }
@@ -175,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Horizontal(float val)
     {
-        if (Application.isFocused)
+        if (Application.isFocused && !Paused)
         {
             mouseInput.Horizontal = val;
         }

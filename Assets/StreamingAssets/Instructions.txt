@@ -1,27 +1,30 @@
-          How To Play
-Goal
+								How To Play
+Goal-
 	the goal of this game is to get to the end as fast as you can.
 	in order to do that you will have to shoot blocks to get through 
 	the walls in your way as well as jump across a gap.
 
-Difficulty
+Difficulty-
 	there are 3 difficulties which will determine how long you have 
 	to make it to the end
 		Easy      100
 		Medium   75
 		Hard        50
 
-Movement
-    use 'wasd' to move forward, left, back, and right
+Movement-
+	use 'wasd' to move forward, left, back, and right
 	use the mouse to look around
 	press 'space' to jump
 
-Pause
+Pause-
 	press 'p' or '\' to pause the game
 
-Shooting
+Shooting-
 	to shoot at the walls blocking your path 
-		press the  left 'ctrl'
-					or
-		left click on the mouse
+			press the  left 'ctrl'
+						or
+			left click on the mouse
+
+Blocks-
+	When you destroy a block it will add 2 sec to your time
 	
