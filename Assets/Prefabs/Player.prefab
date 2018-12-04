@@ -265,7 +265,6 @@ GameObject:
   - component: {fileID: 20547510927374838}
   - component: {fileID: 81610829622981694}
   - component: {fileID: 82994748095649954}
-  - component: {fileID: 135331579498149488}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -280,7 +279,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1237210225663414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.45}
+  m_LocalPosition: {x: 0, y: 0, z: 0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4952691350530348}
@@ -293,7 +292,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933206296603326}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224976053282463232}
@@ -308,7 +307,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165145020982310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.4, y: 1.71, z: -7.6}
+  m_LocalPosition: {x: -5.4, y: 2.12, z: -7.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4952691350530348}
@@ -1186,18 +1185,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!135 &135331579498149488
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1933206296603326}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.17
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143540381332874530
 CharacterController:
   m_ObjectHideFlags: 1
@@ -1208,11 +1195,11 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3
-  m_Radius: 0.5
+  m_Height: 4
+  m_Radius: 0.41
   m_SlopeLimit: 45
   m_StepOffset: 0.25
-  m_SkinWidth: 0.08
+  m_SkinWidth: 0.3
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222141494665661568
@@ -1536,6 +1523,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -25.299988, y: 57.199997}
+  m_AnchoredPosition: {x: -25.299988, y: 57.200012}
   m_SizeDelta: {x: 394, y: 114.2}
   m_Pivot: {x: 0.5, y: 0.5}

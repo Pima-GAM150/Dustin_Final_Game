@@ -25,6 +25,10 @@ public class Shot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+       if(other.name == "Player")
+        {
+            return;
+        }
         other.gameObject.GetComponent<IDamagable>().TakeDamage(Damage);
 
         Destroy(this.gameObject);
